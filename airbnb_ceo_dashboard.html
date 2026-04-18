@@ -1,0 +1,282 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',sans-serif}
+  .dash{padding:1.5rem;background:var(--color-background-tertiary);min-height:100vh}
+  .header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+  .logo{display:flex;align-items:center;gap:10px}
+  .logo-mark{width:32px;height:32px;background:#FF5A5F;border-radius:8px;display:flex;align-items:center;justify-content:center}
+  .logo-mark svg{width:18px;height:18px;fill:white}
+  .logo-title{font-family:'DM Serif Display',serif;font-size:20px;color:var(--color-text-primary)}
+  .subtitle{font-size:12px;color:var(--color-text-secondary);margin-top:2px}
+  .badge{background:#FF5A5F;color:white;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:500}
+  .kpi-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:1.25rem}
+  .kpi{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:1rem 1.125rem;position:relative;overflow:hidden}
+  .kpi::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent)}
+  .kpi-label{font-size:11px;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
+  .kpi-value{font-size:26px;font-weight:600;color:var(--color-text-primary);line-height:1}
+  .kpi-sub{font-size:11px;color:var(--color-text-secondary);margin-top:5px}
+  .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:1.25rem}
+  .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:1.25rem}
+  .card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:1rem 1.125rem}
+  .card-title{font-size:12px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1rem}
+  .bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .bar-label{font-size:12px;color:var(--color-text-secondary);width:130px;flex-shrink:0;text-align:right}
+  .bar-track{flex:1;background:var(--color-background-secondary);border-radius:4px;height:8px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:4px}
+  .bar-val{font-size:12px;font-weight:500;color:var(--color-text-primary);width:50px;flex-shrink:0;text-align:right}
+  .donut-wrap{display:flex;align-items:center;gap:1.5rem}
+  .legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--color-text-secondary);margin-bottom:6px}
+  .legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+  .row-table{width:100%;border-collapse:collapse;font-size:12px}
+  .row-table th{font-size:11px;color:var(--color-text-secondary);text-align:left;padding:0 0 8px;font-weight:500;border-bottom:0.5px solid var(--color-border-tertiary)}
+  .row-table td{padding:7px 0;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary)}
+  .row-table tr:last-child td{border-bottom:none}
+  .rank{font-size:10px;color:var(--color-text-secondary);background:var(--color-background-secondary);border-radius:4px;padding:2px 5px;font-weight:500}
+  .star{color:#FF5A5F;font-size:11px}
+  .section-sep{margin-bottom:1.25rem}
+</style>
+
+<div class="dash">
+  <div class="header">
+    <div class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M22.5 13.3c0 4.3-4.8 8.3-10.5 10.2C6.3 21.6 1.5 17.6 1.5 13.3c0-2.5 1.2-4.7 3-6.3L12 .5l7.5 6.5c1.8 1.6 3 3.8 3 6.3z"/></svg>
+      </div>
+      <div>
+        <div class="logo-title">Airbnb NYC</div>
+        <div class="subtitle">Executive Performance Dashboard</div>
+      </div>
+    </div>
+    <span class="badge">CEO & Stakeholder View</span>
+  </div>
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+    <div class="kpi" style="--accent:#FF5A5F">
+      <div class="kpi-label">Total Listings</div>
+      <div class="kpi-value">102,058</div>
+      <div class="kpi-sub">Across all room types</div>
+    </div>
+    <div class="kpi" style="--accent:#1D9E75">
+      <div class="kpi-label">Active Bookings</div>
+      <div class="kpi-value">78,610</div>
+      <div class="kpi-sub">Medium active + Active</div>
+    </div>
+    <div class="kpi" style="--accent:#378ADD">
+      <div class="kpi-label">Avg Rating</div>
+      <div class="kpi-value">3.29</div>
+      <div class="kpi-sub">Platform-wide average</div>
+    </div>
+    <div class="kpi" style="--accent:#EF9F27">
+      <div class="kpi-label">Highest Avg Price</div>
+      <div class="kpi-value">$453</div>
+      <div class="kpi-sub">Properties built in 2004</div>
+    </div>
+  </div>
+
+  <!-- Row 1: Booking Status + Room Type -->
+  <div class="grid2 section-sep">
+    <div class="card">
+      <div class="card-title">Booking Activity Status</div>
+      <div style="position:relative;width:100%;height:220px"><canvas id="bookingChart" role="img" aria-label="Donut chart of booking activity: Medium Active 47441, Active 31169, Inactive 23448">Medium Active: 47,441 | Active: 31,169 | Inactive: 23,448</canvas></div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:10px">
+        <span class="legend-item"><span class="legend-dot" style="background:#FF5A5F"></span>Medium Active — 47,441</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#1D9E75"></span>Active — 31,169</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#D3D1C7"></span>Inactive — 23,448</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Bookings by Room Type</div>
+      <div style="position:relative;width:100%;height:220px"><canvas id="roomChart" role="img" aria-label="Bar chart: Entire home 53429, Private room 46306, Shared room 2208, Hotel room 115">Entire home: 53,429 | Private: 46,306 | Shared: 2,208 | Hotel: 115</canvas></div>
+    </div>
+  </div>
+
+  <!-- Row 2: Top Hosts + Most Popular -->
+  <div class="grid2 section-sep">
+    <div class="card">
+      <div class="card-title">Top Hosts by Listings</div>
+      <div class="bar-row">
+        <span class="bar-label">Michael</span>
+        <div class="bar-track"><div class="bar-fill" style="width:100%;background:#FF5A5F"></div></div>
+        <span class="bar-val">878</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">David</span>
+        <div class="bar-track"><div class="bar-fill" style="width:86.7%;background:#FF7E82"></div></div>
+        <span class="bar-val">761</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">John</span>
+        <div class="bar-track"><div class="bar-fill" style="width:65.7%;background:#FFA0A2"></div></div>
+        <span class="bar-val">577</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Alex</span>
+        <div class="bar-track"><div class="bar-fill" style="width:61.8%;background:#FFBFC0"></div></div>
+        <span class="bar-val">543</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Sonder (NYC)</span>
+        <div class="bar-track"><div class="bar-fill" style="width:58.8%;background:#FFD5D6"></div></div>
+        <span class="bar-val">516</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Daniel</span>
+        <div class="bar-track"><div class="bar-fill" style="width:53.5%;background:#FFCACB"></div></div>
+        <span class="bar-val">470</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Karen</span>
+        <div class="bar-track"><div class="bar-fill" style="width:49.8%;background:#FFD8D8"></div></div>
+        <span class="bar-val">437</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Sarah</span>
+        <div class="bar-track"><div class="bar-fill" style="width:48.7%;background:#FFE0E0"></div></div>
+        <span class="bar-val">428</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Maria</span>
+        <div class="bar-track"><div class="bar-fill" style="width:48%;background:#FFE8E8"></div></div>
+        <span class="bar-val">421</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Most Popular Listings (Reviews/Month)</div>
+      <table class="row-table">
+        <thead><tr><th>#</th><th>Listing Name</th><th style="text-align:right">Rev/Mo</th><th style="text-align:right">Rating</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rank">1</span></td><td>Broadway Show & Times Square Stay</td><td style="text-align:right;font-weight:500">90.00</td><td style="text-align:right"><span class="star">★</span> 4</td></tr>
+          <tr><td><span class="rank">2</span></td><td>Hudson River View King Bed</td><td style="text-align:right;font-weight:500">84.49</td><td style="text-align:right"><span class="star">★</span> 4</td></tr>
+          <tr><td><span class="rank">3</span></td><td>Central Park / 5th Ave / Radio City</td><td style="text-align:right;font-weight:500">65.74</td><td style="text-align:right"><span class="star">★</span> 3</td></tr>
+          <tr><td><span class="rank">4</span></td><td>City Views Deluxe Room</td><td style="text-align:right;font-weight:500">58.50</td><td style="text-align:right"><span class="star">★</span> 5</td></tr>
+          <tr><td><span class="rank">5</span></td><td>Sonder Battery Park Studio</td><td style="text-align:right;font-weight:500">57.31</td><td style="text-align:right"><span class="star">★</span> 4</td></tr>
+          <tr><td><span class="rank">6</span></td><td>Studio Plus by WhyHotel Wall St</td><td style="text-align:right;font-weight:500">47.11</td><td style="text-align:right"><span class="star">★</span> 5</td></tr>
+          <tr><td><span class="rank">7</span></td><td>S+ Location Midtown Studio</td><td style="text-align:right;font-weight:500">44.63</td><td style="text-align:right"><span class="star">★</span> 5</td></tr>
+          <tr><td><span class="rank">8</span></td><td>Amazing Micro Unit W/ Rooftop</td><td style="text-align:right;font-weight:500">34.46</td><td style="text-align:right"><span class="star">★</span> 2</td></tr>
+          <tr><td><span class="rank">9</span></td><td>City King</td><td style="text-align:right;font-weight:500">33.08</td><td style="text-align:right"><span class="star">★</span> 4</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Row 3: Price by Neighbourhood + Construction Year -->
+  <div class="grid2 section-sep">
+    <div class="card">
+      <div class="card-title">Avg Price by Neighbourhood Group ($)</div>
+      <div style="position:relative;width:100%;height:220px"><canvas id="neighChart" role="img" aria-label="Bar chart: Staten Island 445.91, Bronx 443.21, Manhattan 434.06, Brooklyn 433.79, Queens 428.48">Staten Island: $445.91 | Bronx: $443.21 | Manhattan: $434.06 | Brooklyn: $433.79 | Queens: $428.48</canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Avg Price by Construction Year ($)</div>
+      <div style="position:relative;width:100%;height:220px"><canvas id="constChart" role="img" aria-label="Line chart of avg price by construction year 2003-2022">2004 highest at $453.05, declining trend to 2006 at $425.06</canvas></div>
+    </div>
+  </div>
+
+  <!-- Row 4: Cancellation Policy + Host Verification -->
+  <div class="grid3 section-sep">
+    <div class="card">
+      <div class="card-title">Cancellation Policy vs Ratings</div>
+      <div style="margin-top:0.5rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary)">
+          <span style="font-size:13px;color:var(--color-text-primary);font-weight:500">Flexible</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:80px;background:var(--color-background-secondary);border-radius:4px;height:6px;overflow:hidden"><div style="width:65.8%;height:100%;background:#FF5A5F;border-radius:4px"></div></div>
+            <span style="font-size:13px;font-weight:500;color:var(--color-text-primary)">3.29</span>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary)">
+          <span style="font-size:13px;color:var(--color-text-primary);font-weight:500">Moderate</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:80px;background:var(--color-background-secondary);border-radius:4px;height:6px;overflow:hidden"><div style="width:65.6%;height:100%;background:#378ADD;border-radius:4px"></div></div>
+            <span style="font-size:13px;font-weight:500;color:var(--color-text-primary)">3.28</span>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0">
+          <span style="font-size:13px;color:var(--color-text-primary);font-weight:500">Strict</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:80px;background:var(--color-background-secondary);border-radius:4px;height:6px;overflow:hidden"><div style="width:65.6%;height:100%;background:#1D9E75;border-radius:4px"></div></div>
+            <span style="font-size:13px;font-weight:500;color:var(--color-text-primary)">3.28</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding:10px;background:var(--color-background-secondary);border-radius:8px">
+        <div style="font-size:11px;color:var(--color-text-secondary)">Total properties</div>
+        <div style="display:flex;gap:12px;margin-top:4px;font-size:11px;color:var(--color-text-secondary)">
+          <span>Flexible: <strong style="color:var(--color-text-primary)">33,891</strong></span>
+          <span>Moderate: <strong style="color:var(--color-text-primary)">34,238</strong></span>
+          <span>Strict: <strong style="color:var(--color-text-primary)">33,929</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Host Verification vs Ratings</div>
+      <div style="margin-top:0.5rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary)">
+          <div>
+            <div style="font-size:13px;font-weight:500;color:var(--color-text-primary)">Not Available</div>
+            <div style="font-size:11px;color:var(--color-text-secondary)">289 listings</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:20px;font-weight:600;color:#FF5A5F">3.32</div>
+            <div style="font-size:10px;color:var(--color-text-secondary)">highest</div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary)">
+          <div>
+            <div style="font-size:13px;font-weight:500;color:var(--color-text-primary)">Verified</div>
+            <div style="font-size:11px;color:var(--color-text-secondary)">50,825 listings</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:20px;font-weight:600;color:#1D9E75">3.29</div>
+            <div style="font-size:10px;color:var(--color-text-secondary)">+0.01 vs unconfirmed</div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0">
+          <div>
+            <div style="font-size:13px;font-weight:500;color:var(--color-text-primary)">Unconfirmed</div>
+            <div style="font-size:11px;color:var(--color-text-secondary)">50,944 listings</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:20px;font-weight:600;color:#888780">3.28</div>
+            <div style="font-size:10px;color:var(--color-text-secondary)">baseline</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Avg Reviews per Listing</div>
+      <div style="position:relative;width:100%;height:130px"><canvas id="reviewsChart" role="img" aria-label="Bar chart of avg reviews per listing by cancellation policy">Flexible: 1.38, Moderate: 1.38, Strict: 1.36</canvas></div>
+      <div style="margin-top:1rem;padding:10px;background:var(--color-background-secondary);border-radius:8px">
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:6px">Key Insight</div>
+        <div style="font-size:12px;color:var(--color-text-primary);line-height:1.5">Flexible & Moderate policies yield slightly more reviews per listing (1.38) vs Strict (1.36). Rating gap across all policies is minimal.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+const textColor = isDark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.5)';
+const gridColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)';
+const baseOpts = (extra) => Object.assign({responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:(c)=>' '+c.formattedValue}}}}, extra);
+
+new Chart(document.getElementById('bookingChart'),{type:'doughnut',data:{labels:['Medium Active','Active','Inactive'],datasets:[{data:[47441,31169,23448],backgroundColor:['#FF5A5F','#1D9E75','#D3D1C7'],borderWidth:0,hoverOffset:4}]},options:{responsive:true,maintainAspectRatio:false,cutout:'70%',plugins:{legend:{display:false}}}});
+
+new Chart(document.getElementById('roomChart'),{type:'bar',data:{labels:['Entire home/apt','Private room','Shared room','Hotel room'],datasets:[{data:[53429,46306,2208,115],backgroundColor:['#FF5A5F','#378ADD','#EF9F27','#1D9E75'],borderWidth:0,borderRadius:4}]},options:baseOpts({scales:{x:{ticks:{color:textColor,font:{size:11},autoSkip:false,maxRotation:30},grid:{display:false},border:{display:false}},y:{ticks:{color:textColor,font:{size:11},callback:v=>v.toLocaleString()},grid:{color:gridColor},border:{display:false}}}})});
+
+new Chart(document.getElementById('neighChart'),{type:'bar',data:{labels:['Staten Island','Bronx','Manhattan','Brooklyn','Queens'],datasets:[{data:[445.91,443.21,434.06,433.79,428.48],backgroundColor:['#FF5A5F','#FF7E82','#FFA0A2','#FFBFC0','#FFD5D6'],borderWidth:0,borderRadius:4}]},options:baseOpts({scales:{x:{ticks:{color:textColor,font:{size:11},autoSkip:false,maxRotation:30},grid:{display:false},border:{display:false}},y:{min:420,ticks:{color:textColor,font:{size:11},callback:v=>'$'+v.toFixed(0)},grid:{color:gridColor},border:{display:false}}}})});
+
+const constData = {
+  labels:['2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022'],
+  prices:[434.66,453.05,429.01,425.06,428.12,430.20,437.28,436.30,429.01,436.97,433.96,432.99,426.11,430.12,443.40,427.36,440.08,430.70,428.72,438.77]
+};
+new Chart(document.getElementById('constChart'),{type:'line',data:{labels:constData.labels,datasets:[{data:constData.prices,borderColor:'#FF5A5F',backgroundColor:'rgba(255,90,95,0.08)',borderWidth:2,pointRadius:3,pointBackgroundColor:'#FF5A5F',fill:true,tension:0.35}]},options:baseOpts({scales:{x:{ticks:{color:textColor,font:{size:10},autoSkip:false,maxRotation:45},grid:{display:false},border:{display:false}},y:{min:418,ticks:{color:textColor,font:{size:11},callback:v=>'$'+v.toFixed(0)},grid:{color:gridColor},border:{display:false}}}})});
+
+new Chart(document.getElementById('reviewsChart'),{type:'bar',data:{labels:['Flexible','Moderate','Strict'],datasets:[{data:[1.38,1.38,1.36],backgroundColor:['#FF5A5F','#378ADD','#1D9E75'],borderWidth:0,borderRadius:4}]},options:baseOpts({scales:{x:{ticks:{color:textColor,font:{size:11}},grid:{display:false},border:{display:false}},y:{min:1.34,max:1.40,ticks:{color:textColor,font:{size:11},callback:v=>v.toFixed(2)},grid:{color:gridColor},border:{display:false}}}})});
+</script>
